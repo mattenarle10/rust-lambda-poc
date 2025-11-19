@@ -24,37 +24,25 @@ This repo is a small POC for starting to learn Rust and AWS Lambda, inspired by 
 
 ## Deploy with Cargo Lambda
 
-Assumes you already have an AWS CLI profile and region configured.
+Assumes AWS CLI is configured with credentials.
 
-1. Build the Lambda binary for AWS:
+1. (Optional) pick profile/region:
+
+   ```bash
+   export AWS_PROFILE=your-profile
+   ```
+
+2. Build and deploy:
 
    ```bash
    cargo lambda build --release
-   ```
-
-2. Deploy (create/update) the function:
-
-   ```bash
    cargo lambda deploy rust-lambda-poc
    ```
 
-   You can control account/region with standard AWS env vars, for example:
-
-   ```bash
-   AWS_PROFILE=your-profile AWS_REGION=ap-southeast-1 \
-     cargo lambda deploy rust-lambda-poc
-   ```
-
-3. Invoke the deployed function to test it:
+3. Invoke to test:
 
    ```bash
    cargo lambda invoke rust-lambda-poc \
      --data-ascii '{"path":"/items","id":123}'
    ```
-
-To see which account/identity you're using, run:
-
-```bash
-aws sts get-caller-identity
-```
 
