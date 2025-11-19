@@ -1,8 +1,8 @@
 // Entry point for the real Lambda POC.
-// For now this is just a placeholder main; we'll replace
-// it with a proper lambda_runtime handler as the next step.
+// For now we run the handler once locally with a fake event.
+// Later, this main can be switched to the full Lambda runtime loop.
 
-use lambda_runtime::{service_fn, Error, LambdaEvent};
+use lambda_runtime::{Context, Error, LambdaEvent};
 use serde::{Deserialize, Serialize};
 
 // Simple event payload we'll accept from Lambda (or from a local test).
@@ -31,9 +31,19 @@ async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error
 	Ok(Response { message })
 }
 
-// Lambda entry point. Locally, `cargo run` will start the runtime
-// and immediately run our handler whenever Lambda invokes it.
+// Local entry point: construct a fake event and call the handler once.
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-	lambda_runtime::run(service_fn(function_handler)).await
+    let event = Request {
+        path: "/local/test".to_string(),
+        id: Some(123),
+    };
+
+    let ctx = Context::default();
+    let lambda_event = LambdaEvent::new(event, ctx);
+
+    let resp = function_handler(lambda_event).await?;
+    println!("Local handler response: {}", resp.message);
+
+    Ok(())
 }
