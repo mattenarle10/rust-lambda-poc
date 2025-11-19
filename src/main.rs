@@ -9,6 +9,7 @@ use serde::{Deserialize, Serialize};
 struct Request {
 	path: String,
 	id: Option<u64>,
+	command: Option<String>,
 }
 
 // Simple response we'll return.
@@ -21,12 +22,20 @@ struct Response {
 async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error> {
 	let (event, _context) = event.into_parts();
 
-	let id_info = match event.id {
-		Some(id) => format!(" for id={id}"),
-		None => String::from(""),
+	let command = event.command.as_deref().unwrap_or("hello");
+
+	let message = match command {
+		"hello" => {
+			let id_info = match event.id {
+				Some(id) => format!(" for id={id}"),
+				None => String::from(""),
+			};
+			format!("Hello from Rust Lambda on path '{}'{}", event.path, id_info)
+		}
+		"health" => "ok".to_string(),
+		other => format!("unknown command: {other}"),
 	};
 
-	let message = format!("Hello from Rust Lambda on path '{}'{}", event.path, id_info);
 	Ok(Response { message })
 }
 
