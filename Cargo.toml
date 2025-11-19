@@ -1,7 +1,11 @@
 [package]
 name = "rust-lambda-poc"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 default-run = "rust-lambda-poc"
 
 [dependencies]
+lambda_runtime = "0.13"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
