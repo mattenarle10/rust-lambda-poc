@@ -19,4 +19,5 @@ This repo is a small POC for starting to learn Rust and AWS Lambda, inspired by 
 - [AWS Lambda with Rust](https://docs.aws.amazon.com/lambda/latest/dg/lambda-rust.html)
 - [AWS SDK for Rust – Developer Guide](https://docs.aws.amazon.com/sdk-for-rust/latest/dg/welcome.html)
 - [Building serverless applications with Rust on AWS Lambda](https://aws.amazon.com/blogs/compute/building-serverless-applications-with-rust-on-aws-lambda/)
+- [The Rust Programming Language](https://doc.rust-lang.org/book/ch00-00-introduction.html)
 
