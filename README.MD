@@ -39,10 +39,15 @@ Assumes AWS CLI is configured with credentials.
    cargo lambda deploy rust-lambda-poc
    ```
 
-3. Invoke to test:
+3. Invoke to test (remote Lambda):
 
    ```bash
-   cargo lambda invoke rust-lambda-poc \
+   # hello example
+   cargo lambda invoke rust-lambda-poc --remote \
      --data-ascii '{"path":"/items","id":123}'
+
+   # simple health check
+   cargo lambda invoke rust-lambda-poc --remote \
+     --data-ascii '{"path":"/health","command":"health"}'
    ```
 
