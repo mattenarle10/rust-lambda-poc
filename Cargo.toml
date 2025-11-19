@@ -2,5 +2,6 @@
 name = "rust-lambda-poc"
 version = "0.1.0"
 edition = "2021"
+default-run = "rust-lambda-poc"
 
 [dependencies]
