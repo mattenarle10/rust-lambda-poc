@@ -6,7 +6,7 @@ This repo is a small POC for starting to learn Rust and AWS Lambda, inspired by 
 
 ---
 
-## 🚀 Features
+## Features
 
 - AWS Lambda function written in Rust
 - Uses AWS SDK for Rust
@@ -14,7 +14,7 @@ This repo is a small POC for starting to learn Rust and AWS Lambda, inspired by 
 - Very small Lambda binary (2–4 MB)
 - Extremely fast cold starts
 
-## 📚 References
+## References
 
 - [AWS Lambda with Rust](https://docs.aws.amazon.com/lambda/latest/dg/lambda-rust.html)
 - [AWS SDK for Rust – Developer Guide](https://docs.aws.amazon.com/sdk-for-rust/latest/dg/welcome.html)
