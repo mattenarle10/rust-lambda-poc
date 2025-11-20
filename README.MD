@@ -51,3 +51,9 @@ Assumes AWS CLI is configured with credentials.
      --data-ascii '{"path":"/health","command":"health"}'
    ```
 
+## Next step – Blog 2 CDK + HTTP API
+
+Once you're comfortable with this single-function Lambda deployed via Cargo Lambda, the next repo in the series is [`rust-lambda-cdk-s3-poc`](https://github.com/mattenarle10/rust-lambda-cdk-s3-poc), which:
+
+- Uses AWS CDK to deploy a Rust Lambda behind HTTP API Gateway.
+- Adds `/health` and S3-backed `/items` endpoints (GET/POST/DELETE).
